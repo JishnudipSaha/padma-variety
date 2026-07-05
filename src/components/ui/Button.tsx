@@ -11,20 +11,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", loading, children, disabled, ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    const baseStyles = "inline-flex items-center justify-center font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed";
 
     const variants = {
-      primary: "bg-rose-gold text-white hover:bg-rose-gold-dark focus:ring-rose-gold shadow-rose",
-      secondary: "bg-cream text-dark-brown hover:bg-cream-dark focus:ring-cream",
-      outline: "border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white focus:ring-rose-gold",
-      ghost: "text-dark-brown hover:bg-cream focus:ring-cream",
-      danger: "bg-red-500 text-white hover:bg-red-600 focus:ring-red-500",
+      primary: "bg-primary text-white hover:bg-primary-light",
+      secondary: "bg-bg-alt text-primary hover:bg-border-light",
+      outline: "border border-border text-primary hover:border-primary",
+      ghost: "text-text-muted hover:text-primary",
+      danger: "bg-red-500 text-white hover:bg-red-600",
     };
 
     const sizes = {
-      sm: "px-3 py-1.5 text-sm",
-      md: "px-5 py-2.5 text-sm",
-      lg: "px-7 py-3 text-base",
+      sm: "px-4 py-2 text-xs tracking-wider uppercase",
+      md: "px-6 py-2.5 text-xs tracking-wider uppercase",
+      lg: "px-8 py-3 text-xs tracking-wider uppercase",
     };
 
     return (

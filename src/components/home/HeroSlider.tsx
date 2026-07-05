@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Banner {
@@ -29,7 +28,7 @@ export default function HeroSlider({ banners }: { banners: Banner[] }) {
 
   useEffect(() => {
     if (banners.length <= 1) return;
-    const timer = setInterval(next, 5000);
+    const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
   }, [next, banners.length]);
 
@@ -39,17 +38,16 @@ export default function HeroSlider({ banners }: { banners: Banner[] }) {
   const hasImage = banner.image && !imgError[banner.id];
 
   return (
-    <div className="relative h-[60vh] min-h-[400px] overflow-hidden bg-cream">
+    <div className="relative h-[70vh] min-h-[500px] overflow-hidden bg-bg-alt">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
-          {/* Background image */}
           {hasImage ? (
             <Image
               src={banner.image}
@@ -61,41 +59,38 @@ export default function HeroSlider({ banners }: { banners: Banner[] }) {
               onError={() => setImgError((prev) => ({ ...prev, [banner.id]: true }))}
             />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-rose-gold via-rose-gold-dark to-dark-brown" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-text-light" />
           )}
 
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/80 via-dark-brown/40 to-transparent z-10" />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/30" />
 
           {/* Content */}
-          <div className="absolute inset-0 z-20 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 w-full">
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-7xl mx-auto px-4 lg:px-8 w-full">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="max-w-xl"
+                className="max-w-lg"
               >
-                <h2 className="font-[family-name:var(--font-sans)] text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+                <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 leading-tight">
                   {banner.title}
                 </h2>
                 {banner.subtitle && (
-                  <p className="text-cream/90 text-lg md:text-xl mb-6">
+                  <p className="text-white/80 text-base md:text-lg mb-8 font-light">
                     {banner.subtitle}
                   </p>
                 )}
-                <Link href={banner.link || "/products"}>
-                  <Button size="lg" variant="primary">
-                    Explore Collection
-                  </Button>
+                <Link
+                  href={banner.link || "/products"}
+                  className="inline-block px-10 py-3 bg-white text-primary text-xs tracking-widest uppercase hover:bg-primary hover:text-white transition-colors"
+                >
+                  Shop Now
                 </Link>
               </motion.div>
             </div>
           </div>
-
-          {/* Decorative elements */}
-          <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-rose-gold/20 blur-3xl" />
-          <div className="absolute bottom-10 right-32 w-48 h-48 rounded-full bg-gold/20 blur-3xl" />
         </motion.div>
       </AnimatePresence>
 
@@ -104,28 +99,28 @@ export default function HeroSlider({ banners }: { banners: Banner[] }) {
         <>
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-all"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 text-white/70 hover:text-white transition-colors"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={28} strokeWidth={1} />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-all"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-3 text-white/70 hover:text-white transition-colors"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={28} strokeWidth={1} />
           </button>
         </>
       )}
 
       {/* Dots */}
       {banners.length > 1 && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2">
           {banners.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
-                i === current ? "bg-white w-8" : "bg-white/50"
+              className={`h-[2px] transition-all ${
+                i === current ? "bg-white w-8" : "bg-white/40 w-4"
               }`}
             />
           ))}

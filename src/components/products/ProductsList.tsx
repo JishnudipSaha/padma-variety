@@ -33,25 +33,23 @@ export default function ProductsList({
     <div>
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        {/* Search */}
         <input
           type="text"
           placeholder="Search products..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown placeholder:text-dark-brown/40 focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+          className="flex-1 px-4 py-3 border border-border bg-white text-primary placeholder:text-text-muted focus:outline-none focus:border-primary text-sm"
         />
 
-        {/* Category tabs */}
         <div className="flex gap-2 flex-wrap">
           {["All", ...categories].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2 text-xs tracking-wider uppercase transition-colors ${
                 selectedCategory === cat
-                  ? "bg-rose-gold text-white"
-                  : "bg-white text-dark-brown border border-cream-dark hover:border-rose-gold"
+                  ? "bg-primary text-white"
+                  : "bg-white text-text-muted border border-border hover:border-primary hover:text-primary"
               }`}
             >
               {cat}
@@ -60,18 +58,16 @@ export default function ProductsList({
         </div>
       </div>
 
-      {/* Grid */}
       {filtered.length === 0 ? (
         <div className="text-center py-16">
-          <p className="text-dark-brown/50 text-lg">No products found</p>
+          <p className="text-text-muted text-sm">No products found</p>
         </div>
       ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-
       )}
     </div>
   );

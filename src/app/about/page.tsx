@@ -25,30 +25,27 @@ export default async function AboutPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero */}
-        <section className="py-20 px-4 bg-gradient-cream">
+        <section className="py-20 px-4 bg-bg-alt">
           <div className="max-w-4xl mx-auto text-center">
             <ScrollReveal>
-              <h1 className="font-[family-name:var(--font-sans)] text-4xl md:text-5xl font-bold text-dark-brown mb-4">
+              <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-light text-primary mb-4">
                 About Padma Variety Stores
               </h1>
-              <div className="w-20 h-1 bg-gradient-rose mx-auto rounded-full mb-6" />
-              <p className="text-lg text-dark-brown/70 leading-relaxed">
+              <p className="text-sm text-text-muted tracking-wide">
                 Your trusted destination for premium beauty and cosmetic products in the heart of Kolkata
               </p>
             </ScrollReveal>
           </div>
         </section>
 
-        {/* Story */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-              <div className="bg-white rounded-2xl p-8 md:p-12 shadow-rose border border-cream-dark/50">
-                <h2 className="font-[family-name:var(--font-sans)] text-2xl font-bold text-dark-brown mb-4">
+              <div className="border border-border p-8 md:p-12">
+                <h2 className="font-[family-name:var(--font-display)] text-2xl font-medium text-primary mb-4">
                   Our Story
                 </h2>
-                <div className="prose prose-lg text-dark-brown/70 leading-relaxed whitespace-pre-line">
+                <div className="text-sm text-text-light leading-relaxed whitespace-pre-line">
                   {aboutContent?.value || "Welcome to Padma Variety Stores, your trusted destination for premium beauty and cosmetic products in the heart of Kolkata."}
                 </div>
               </div>
@@ -56,25 +53,23 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* Values */}
-        <section className="py-16 px-4 bg-cream/50">
+        <section className="py-16 px-4 bg-bg-alt">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
-              <div className="text-center mb-10">
-                <h2 className="font-[family-name:var(--font-sans)] text-3xl font-bold text-dark-brown">Our Values</h2>
-                <div className="mt-3 w-20 h-1 bg-gradient-rose mx-auto rounded-full" />
+              <div className="text-center mb-12">
+                <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-primary">Our Values</h2>
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((v, i) => (
                 <ScrollReveal key={v.title} delay={i * 0.1}>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-rose border border-cream-dark/50">
-                    <div className="w-14 h-14 rounded-full bg-gradient-rose mx-auto flex items-center justify-center mb-4">
-                      <v.icon size={24} className="text-white" />
+                  <div className="text-center">
+                    <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-border">
+                      <v.icon size={20} strokeWidth={1.5} className="text-text-muted" />
                     </div>
-                    <h3 className="font-[family-name:var(--font-sans)] font-semibold text-dark-brown mb-2">{v.title}</h3>
-                    <p className="text-sm text-dark-brown/60">{v.description}</p>
+                    <h3 className="text-sm font-medium text-primary mb-2 uppercase tracking-wide">{v.title}</h3>
+                    <p className="text-sm text-text-muted">{v.description}</p>
                   </div>
                 </ScrollReveal>
               ))}

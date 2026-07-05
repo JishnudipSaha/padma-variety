@@ -28,29 +28,30 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 px-4 bg-cream/50">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 lg:py-24 bg-bg-alt">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <ScrollReveal>
-          <div className="text-center mb-10">
-            <h2 className="font-[family-name:var(--font-sans)] text-3xl md:text-4xl font-bold text-dark-brown">
+          <div className="text-center mb-12">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-4xl font-light text-primary mb-3">
               Why Choose Us
             </h2>
-            <p className="mt-2 text-dark-brown/60">Experience the difference of quality and care</p>
-            <div className="mt-3 w-20 h-1 bg-gradient-rose mx-auto rounded-full" />
+            <p className="text-sm text-text-muted tracking-wide">
+              Experience the difference of quality and care
+            </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, i) => (
             <ScrollReveal key={feature.title} delay={i * 0.1}>
-              <div className="bg-white rounded-2xl p-6 text-center shadow-rose border border-cream-dark/50 hover:shadow-rose-lg transition-shadow group">
-                <div className="w-14 h-14 rounded-full bg-gradient-rose mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <feature.icon size={24} className="text-white" />
+              <div className="text-center group">
+                <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-border group-hover:border-primary transition-colors">
+                  <feature.icon size={20} strokeWidth={1.5} className="text-text-muted group-hover:text-primary transition-colors" />
                 </div>
-                <h3 className="font-[family-name:var(--font-sans)] font-semibold text-dark-brown mb-2">
+                <h3 className="text-sm font-medium text-primary mb-2 uppercase tracking-wide">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-dark-brown/60 leading-relaxed">{feature.description}</p>
+                <p className="text-sm text-text-muted leading-relaxed">{feature.description}</p>
               </div>
             </ScrollReveal>
           ))}

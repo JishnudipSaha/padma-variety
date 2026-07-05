@@ -5,23 +5,23 @@ import { MapPin } from "lucide-react";
 
 export default function MapPreview() {
   return (
-    <section className="py-16 px-4 bg-cream/50">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 lg:py-24 bg-bg-alt">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <ScrollReveal>
-          <div className="text-center mb-8">
-            <h2 className="font-[family-name:var(--font-sans)] text-3xl md:text-4xl font-bold text-dark-brown">
+          <div className="text-center mb-10">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-4xl font-light text-primary mb-3">
               Find Us
             </h2>
-            <p className="mt-2 text-dark-brown/60">Visit our store in the heart of Kolkata</p>
-            <div className="mt-3 w-20 h-1 bg-gradient-rose mx-auto rounded-full" />
+            <p className="text-sm text-text-muted tracking-wide">
+              Visit our store in the heart of Kolkata
+            </p>
           </div>
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="bg-white rounded-2xl overflow-hidden shadow-rose border border-cream-dark/50">
+          <div className="bg-white overflow-hidden border border-border">
             <div className="grid grid-cols-1 md:grid-cols-3">
-              {/* Map */}
-              <div className="md:col-span-2 h-[350px] bg-cream">
+              <div className="md:col-span-2 h-[350px] bg-bg-alt">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.5!2d88.3639!3d22.5852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDM1JzA2LjciTiA4OMKwMjEnNTAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
                   width="100%"
@@ -34,29 +34,26 @@ export default function MapPreview() {
                 />
               </div>
 
-              {/* Info */}
-              <div className="p-6 flex flex-col justify-center">
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-rose-gold/10 flex items-center justify-center shrink-0">
-                    <MapPin size={18} className="text-rose-gold" />
-                  </div>
+              <div className="p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-border">
+                <div className="flex items-start gap-3 mb-6">
+                  <MapPin size={18} strokeWidth={1.5} className="mt-0.5 shrink-0 text-text-muted" />
                   <div>
-                    <h3 className="font-semibold text-dark-brown">Our Location</h3>
-                    <p className="text-sm text-dark-brown/60 mt-1">
-                      PFG8+XM7, Colony more, Kol4, Nabapally, Barasat, West Bengal 700126, India
+                    <h3 className="text-sm font-medium text-primary mb-1">Our Location</h3>
+                    <p className="text-sm text-text-muted leading-relaxed">
+                      PFG8+XM7, Colony more, Kol4, Nabapally, Barasat, West Bengal 700126
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-3 text-sm">
+                <div className="space-y-4 text-sm mb-6">
                   <div>
-                    <p className="font-medium text-dark-brown">Working Hours</p>
-                    <p className="text-dark-brown/60">Mon-Sat: 10:00 AM - 9:00 PM</p>
-                    <p className="text-dark-brown/60">Sunday: 11:00 AM - 7:00 PM</p>
+                    <p className="font-medium text-primary mb-1">Working Hours</p>
+                    <p className="text-text-muted">Mon-Sat: 10:00 AM - 9:00 PM</p>
+                    <p className="text-text-muted">Sunday: 11:00 AM - 7:00 PM</p>
                   </div>
                   <div>
-                    <p className="font-medium text-dark-brown">Phone</p>
-                    <p className="text-dark-brown/60">+91 98308 67228</p>
+                    <p className="font-medium text-primary mb-1">Phone</p>
+                    <p className="text-text-muted">+91 98308 67228</p>
                   </div>
                 </div>
 
@@ -64,7 +61,7 @@ export default function MapPreview() {
                   href="https://share.google/yvdsIml1nkDz4PF1c"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center justify-center px-4 py-2 bg-rose-gold text-white rounded-lg text-sm font-medium hover:bg-rose-gold-dark transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-2.5 border border-primary text-primary text-xs tracking-widest uppercase hover:bg-primary hover:text-white transition-colors"
                 >
                   Get Directions
                 </a>

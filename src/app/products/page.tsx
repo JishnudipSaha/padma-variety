@@ -23,11 +23,10 @@ export default async function ProductsPage() {
       <main className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h1 className="font-[family-name:var(--font-sans)] text-4xl font-bold text-dark-brown">
+            <h1 className="font-[family-name:var(--font-display)] text-4xl font-light text-primary">
               Our Products
             </h1>
-            <p className="mt-2 text-dark-brown/60">Explore our curated collection</p>
-            <div className="mt-3 w-20 h-1 bg-gradient-rose mx-auto rounded-full" />
+            <p className="mt-2 text-sm text-text-muted tracking-wide">Explore our curated collection</p>
           </div>
           <ProductsList products={products} categories={categories} />
         </div>
