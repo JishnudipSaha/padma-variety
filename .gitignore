@@ -26,6 +26,7 @@
 dev.db
 dev.log
 .opencode/
+src/generated/
 
 # debug
 npm-debug.log*
