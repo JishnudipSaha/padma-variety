@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Plus, Edit, Trash2, Search, Star } from "lucide-react";
-import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 import { showToast } from "@/components/ui/Toast";
 
@@ -52,67 +51,66 @@ export default function AdminProductsPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-dark-brown">Products</h2>
-          <p className="text-sm text-dark-brown/50">{products.length} products total</p>
+          <h2 className="text-2xl font-[family-name:var(--font-display)] font-medium text-primary">Products</h2>
+          <p className="text-sm text-text-muted">{products.length} products total</p>
         </div>
-        <Link href="/admin/products/new">
-          <Button>
-            <Plus size={16} className="mr-2" />
-            Add Product
-          </Button>
+        <Link
+          href="/admin/products/new"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-white text-xs tracking-wider uppercase hover:bg-primary-light transition-colors"
+        >
+          <Plus size={14} strokeWidth={1.5} />
+          Add Product
         </Link>
       </div>
 
-      {/* Search */}
       <div className="mb-4">
         <div className="relative">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-brown/40" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
           <input
             type="text"
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown placeholder:text-dark-brown/40 focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+            className="w-full pl-10 pr-4 py-3 border border-border bg-white text-primary placeholder:text-text-muted focus:outline-none focus:border-primary text-sm"
           />
         </div>
       </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl shadow-rose border border-cream-dark/50 overflow-hidden">
+      <div className="bg-white border border-border overflow-hidden">
         <table className="w-full">
-          <thead className="bg-cream/50 border-b border-cream-dark">
+          <thead className="bg-bg-alt border-b border-border">
             <tr>
-              <th className="text-left px-4 py-3 text-sm font-medium text-dark-brown">Name</th>
-              <th className="text-left px-4 py-3 text-sm font-medium text-dark-brown">Category</th>
-              <th className="text-left px-4 py-3 text-sm font-medium text-dark-brown">Price</th>
-              <th className="text-left px-4 py-3 text-sm font-medium text-dark-brown">Status</th>
-              <th className="text-right px-4 py-3 text-sm font-medium text-dark-brown">Actions</th>
+              <th className="text-left px-4 py-3 text-xs text-text-muted uppercase tracking-wider">Name</th>
+              <th className="text-left px-4 py-3 text-xs text-text-muted uppercase tracking-wider">Category</th>
+              <th className="text-left px-4 py-3 text-xs text-text-muted uppercase tracking-wider">Price</th>
+              <th className="text-left px-4 py-3 text-xs text-text-muted uppercase tracking-wider">Status</th>
+              <th className="text-right px-4 py-3 text-xs text-text-muted uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-cream-dark">
+          <tbody className="divide-y divide-border">
             {loading ? (
               <tr>
-                <td colSpan={5} className="text-center py-8 text-dark-brown/50">Loading...</td>
+                <td colSpan={5} className="text-center py-8 text-text-muted text-sm">Loading...</td>
               </tr>
             ) : filtered.length === 0 ? (
               <tr>
-                <td colSpan={5} className="text-center py-8 text-dark-brown/50">No products found</td>
+                <td colSpan={5} className="text-center py-8 text-text-muted text-sm">No products found</td>
               </tr>
             ) : (
               filtered.map((product) => (
-                <tr key={product.id} className="hover:bg-cream/30 transition-colors">
+                <tr key={product.id} className="hover:bg-bg-alt transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-dark-brown">{product.name}</span>
-                      {product.featured && <Star size={14} className="fill-gold text-gold" />}
+                      <span className="text-sm font-medium text-primary">{product.name}</span>
+                      {product.featured && <Star size={12} className="fill-accent text-accent" />}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-sm text-dark-brown/60">{product.category}</td>
-                  <td className="px-4 py-3 text-sm font-medium text-rose-gold">
+                  <td className="px-4 py-3 text-sm text-text-muted">{product.category}</td>
+                  <td className="px-4 py-3 text-sm font-medium text-primary">
                     {product.price ? `₹${product.price.toLocaleString("en-IN")}` : "-"}
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${product.inStock ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                    <span className={`px-2 py-1 text-xs ${product.inStock ? "text-green-600" : "text-red-500"}`}>
                       {product.inStock ? "In Stock" : "Out of Stock"}
                     </span>
                   </td>
@@ -120,15 +118,15 @@ export default function AdminProductsPage() {
                     <div className="flex items-center justify-end gap-2">
                       <Link
                         href={`/admin/products/${product.id}/edit`}
-                        className="p-2 rounded-lg hover:bg-cream text-dark-brown/50 hover:text-rose-gold transition-all"
+                        className="p-2 text-text-muted hover:text-primary transition-colors"
                       >
-                        <Edit size={16} />
+                        <Edit size={16} strokeWidth={1.5} />
                       </Link>
                       <button
                         onClick={() => setDeleteId(product.id)}
-                        className="p-2 rounded-lg hover:bg-red-50 text-dark-brown/50 hover:text-red-500 transition-all"
+                        className="p-2 text-text-muted hover:text-red-500 transition-colors"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={16} strokeWidth={1.5} />
                       </button>
                     </div>
                   </td>
@@ -139,12 +137,21 @@ export default function AdminProductsPage() {
         </table>
       </div>
 
-      {/* Delete confirmation */}
       <Modal isOpen={!!deleteId} onClose={() => setDeleteId(null)} title="Delete Product">
-        <p className="text-dark-brown/70 mb-6">Are you sure you want to delete this product? This action cannot be undone.</p>
+        <p className="text-text-light text-sm mb-6">Are you sure you want to delete this product? This action cannot be undone.</p>
         <div className="flex gap-3 justify-end">
-          <Button variant="ghost" onClick={() => setDeleteId(null)}>Cancel</Button>
-          <Button variant="danger" onClick={handleDelete}>Delete</Button>
+          <button
+            onClick={() => setDeleteId(null)}
+            className="px-4 py-2 text-xs tracking-wider uppercase border border-border text-primary hover:bg-bg-alt transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleDelete}
+            className="px-4 py-2 text-xs tracking-wider uppercase bg-red-500 text-white hover:bg-red-600 transition-colors"
+          >
+            Delete
+          </button>
         </div>
       </Modal>
     </div>

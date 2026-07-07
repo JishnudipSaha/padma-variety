@@ -65,15 +65,15 @@ export default function AdminContentPage() {
   };
 
   if (loading) {
-    return <div className="text-center py-8 text-dark-brown/50">Loading content...</div>;
+    return <div className="text-center py-8 text-text-muted">Loading content...</div>;
   }
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-dark-brown">Site Content</h2>
-          <p className="text-sm text-dark-brown/50">Edit all the text displayed on your website</p>
+          <h2 className="text-2xl font-bold text-primary">Site Content</h2>
+          <p className="text-sm text-text-muted">Edit all the text displayed on your website</p>
         </div>
         <Button onClick={handleSave} loading={saving}>
           <Save size={16} className="mr-2" />
@@ -83,24 +83,24 @@ export default function AdminContentPage() {
 
       <div className="space-y-4">
         {content.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl p-5 shadow-rose border border-cream-dark/50">
-            <label className="block text-sm font-semibold text-dark-brown mb-2">
+          <div key={item.id} className="bg-white rounded-lg p-5 border border-border">
+            <label className="block text-sm font-semibold text-primary mb-2">
               {labelMap[item.key] || item.key}
             </label>
-            <p className="text-xs text-dark-brown/40 mb-2 font-mono">{item.key}</p>
+            <p className="text-xs text-text-muted mb-2 font-mono">{item.key}</p>
             {item.value.length > 100 ? (
               <textarea
                 rows={5}
                 value={item.value}
                 onChange={(e) => updateValue(item.key, e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown text-sm focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold resize-y"
+                className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary text-sm focus:outline-none focus:border-primary resize-y"
               />
             ) : (
               <input
                 type="text"
                 value={item.value}
                 onChange={(e) => updateValue(item.key, e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown text-sm focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+                className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary text-sm focus:outline-none focus:border-primary"
               />
             )}
           </div>

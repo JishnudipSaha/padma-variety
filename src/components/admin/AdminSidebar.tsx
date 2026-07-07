@@ -40,20 +40,20 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-0 h-full bg-dark-brown text-white z-40 transition-all duration-300 flex flex-col",
+        "fixed left-0 top-0 h-full bg-primary text-white z-40 transition-all duration-300 flex flex-col",
         collapsed ? "w-[70px]" : "w-64"
       )}
     >
       <div className="p-4 border-b border-white/10 flex items-center justify-between">
         {!collapsed && (
           <div>
-            <h2 className="font-[family-name:var(--font-sans)] font-bold text-sm">Admin Panel</h2>
-            <p className="text-[10px] text-cream/50">Padma Variety Stores</p>
+            <h2 className="font-medium text-sm tracking-wide">Admin Panel</h2>
+            <p className="text-[10px] text-white/40 mt-0.5">Padma Variety Stores</p>
           </div>
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+          className="p-1.5 rounded hover:bg-white/10 transition-colors"
         >
           <ChevronLeft
             size={18}
@@ -73,14 +73,14 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
               key={link.href}
               href={link.href}
               className={cn(
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all",
+                "flex items-center gap-3 px-3 py-2.5 rounded text-sm transition-all",
                 isActive
-                  ? "bg-rose-gold text-white"
-                  : "text-cream/70 hover:bg-white/10 hover:text-white"
+                  ? "bg-white text-primary"
+                  : "text-white/60 hover:bg-white/10 hover:text-white"
               )}
               title={collapsed ? link.label : undefined}
             >
-              <link.icon size={18} />
+              <link.icon size={18} strokeWidth={1.5} />
               {!collapsed && <span>{link.label}</span>}
             </Link>
           );
@@ -91,18 +91,18 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
         <Link
           href="/"
           target="_blank"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-cream/70 hover:bg-white/10 hover:text-white transition-all"
+          className="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-white/60 hover:bg-white/10 hover:text-white transition-all"
           title={collapsed ? "View Site" : undefined}
         >
-          <Home size={18} />
+          <Home size={18} strokeWidth={1.5} />
           {!collapsed && <span>View Site</span>}
         </Link>
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-cream/70 hover:bg-red-500/20 hover:text-red-400 transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm text-white/60 hover:bg-red-500/20 hover:text-red-400 transition-all"
           title={collapsed ? "Sign Out" : undefined}
         >
-          <LogOut size={18} />
+          <LogOut size={18} strokeWidth={1.5} />
           {!collapsed && <span>Sign Out</span>}
         </button>
       </div>

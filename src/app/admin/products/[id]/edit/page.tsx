@@ -60,59 +60,59 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
   };
 
   if (fetching) {
-    return <div className="text-center py-8 text-dark-brown/50">Loading product...</div>;
+    return <div className="text-center py-8 text-text-muted">Loading product...</div>;
   }
 
   return (
     <div>
-      <Link href="/admin/products" className="inline-flex items-center gap-2 text-rose-gold hover:text-rose-gold-dark mb-6 transition-colors">
+      <Link href="/admin/products" className="inline-flex items-center gap-2 text-primary hover:text-primary mb-6 transition-colors">
         <ArrowLeft size={18} />
         <span className="text-sm font-medium">Back to Products</span>
       </Link>
 
-      <div className="bg-white rounded-2xl p-8 shadow-rose border border-cream-dark/50 max-w-2xl">
-        <h2 className="text-2xl font-bold text-dark-brown mb-6">Edit Product</h2>
+      <div className="bg-white rounded-lg p-8 border border-border max-w-2xl">
+        <h2 className="text-2xl font-bold text-primary mb-6">Edit Product</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-dark-brown mb-1.5">Product Name *</label>
+            <label className="block text-sm font-medium text-primary mb-1.5">Product Name *</label>
             <input
               type="text"
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+              className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-dark-brown mb-1.5">Description</label>
+            <label className="block text-sm font-medium text-primary mb-1.5">Description</label>
             <textarea
               rows={4}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold resize-y"
+              className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary resize-y"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-dark-brown mb-1.5">Price (₹)</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Price (₹)</label>
               <input
                 type="number"
                 step="0.01"
                 value={form.price}
                 onChange={(e) => setForm({ ...form, price: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+                className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-dark-brown mb-1.5">Category *</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Category *</label>
               <select
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+                className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary"
               >
                 <option value="Skincare">Skincare</option>
                 <option value="Makeup">Makeup</option>
@@ -129,9 +129,9 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                 type="checkbox"
                 checked={form.featured}
                 onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-                className="w-4 h-4 rounded border-cream-dark text-rose-gold focus:ring-rose-gold"
+                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
               />
-              <span className="text-sm text-dark-brown">Featured on homepage</span>
+              <span className="text-sm text-primary">Featured on homepage</span>
             </label>
 
             <label className="flex items-center gap-2 cursor-pointer">
@@ -139,9 +139,9 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                 type="checkbox"
                 checked={form.inStock}
                 onChange={(e) => setForm({ ...form, inStock: e.target.checked })}
-                className="w-4 h-4 rounded border-cream-dark text-rose-gold focus:ring-rose-gold"
+                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
               />
-              <span className="text-sm text-dark-brown">In Stock</span>
+              <span className="text-sm text-primary">In Stock</span>
             </label>
           </div>
 

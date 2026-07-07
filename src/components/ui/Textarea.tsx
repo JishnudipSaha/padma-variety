@@ -14,7 +14,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={id} className="block text-sm font-medium text-dark-brown mb-1.5">
+          <label htmlFor={id} className="block text-sm font-medium text-primary mb-1.5">
             {label}
           </label>
         )}
@@ -22,16 +22,16 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={id}
           className={cn(
-            "w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown",
-            "placeholder:text-dark-brown/40 focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold",
+            "w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary",
+            "placeholder:text-text-muted focus:outline-none focus:border-primary",
             "transition-all duration-200 min-h-[100px] resize-y",
-            error && "border-red-400 focus:ring-red-400/30 focus:border-red-400",
+            error && "border-red-400 focus:border-red-400",
             className
           )}
           {...props}
         />
         {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
-        {helperText && !error && <p className="mt-1 text-sm text-dark-brown/50">{helperText}</p>}
+        {helperText && !error && <p className="mt-1 text-sm text-text-muted">{helperText}</p>}
       </div>
     );
   }

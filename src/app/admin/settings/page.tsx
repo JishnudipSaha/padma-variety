@@ -63,15 +63,15 @@ export default function AdminSettingsPage() {
   };
 
   if (loading) {
-    return <div className="text-center py-8 text-dark-brown/50">Loading settings...</div>;
+    return <div className="text-center py-8 text-text-muted">Loading settings...</div>;
   }
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-dark-brown">Store Settings</h2>
-          <p className="text-sm text-dark-brown/50">Update your store information</p>
+          <h2 className="text-2xl font-bold text-primary">Store Settings</h2>
+          <p className="text-sm text-text-muted">Update your store information</p>
         </div>
         <Button onClick={handleSave} loading={saving}>
           <Save size={16} className="mr-2" />
@@ -81,8 +81,8 @@ export default function AdminSettingsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {settings.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl p-5 shadow-rose border border-cream-dark/50">
-            <label className="block text-sm font-semibold text-dark-brown mb-2">
+          <div key={item.id} className="bg-white rounded-lg p-5 border border-border">
+            <label className="block text-sm font-semibold text-primary mb-2">
               {labelMap[item.key] || item.key}
             </label>
             {item.value.length > 80 ? (
@@ -90,14 +90,14 @@ export default function AdminSettingsPage() {
                 rows={3}
                 value={item.value}
                 onChange={(e) => updateValue(item.key, e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown text-sm focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold resize-y"
+                className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary text-sm focus:outline-none focus:border-primary resize-y"
               />
             ) : (
               <input
                 type="text"
                 value={item.value}
                 onChange={(e) => updateValue(item.key, e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown text-sm focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold"
+                className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary text-sm focus:outline-none focus:border-primary"
               />
             )}
           </div>

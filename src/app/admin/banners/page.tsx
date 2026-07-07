@@ -96,8 +96,8 @@ export default function AdminBannersPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-dark-brown">Hero Banners</h2>
-          <p className="text-sm text-dark-brown/50">Manage your homepage slider</p>
+          <h2 className="text-2xl font-bold text-primary">Hero Banners</h2>
+          <p className="text-sm text-text-muted">Manage your homepage slider</p>
         </div>
         <Button onClick={openAddModal}>
           <Plus size={16} className="mr-2" />
@@ -108,29 +108,29 @@ export default function AdminBannersPage() {
       {/* Banner list */}
       <div className="space-y-3">
         {loading ? (
-          <div className="text-center py-8 text-dark-brown/50">Loading...</div>
+          <div className="text-center py-8 text-text-muted">Loading...</div>
         ) : banners.length === 0 ? (
-          <div className="text-center py-8 text-dark-brown/50 bg-white rounded-xl border border-cream-dark">
+          <div className="text-center py-8 text-text-muted bg-white rounded-lg border border-border">
             No banners yet. Add your first hero banner!
           </div>
         ) : (
           banners.map((banner) => (
-            <div key={banner.id} className="bg-white rounded-xl p-4 shadow-rose border border-cream-dark/50 flex items-center gap-4">
-              <GripVertical size={18} className="text-dark-brown/30 cursor-grab" />
-              <div className="w-20 h-12 bg-cream rounded-lg flex items-center justify-center text-xs text-dark-brown/50">
+            <div key={banner.id} className="bg-white rounded-lg p-4 border border-border flex items-center gap-4">
+              <GripVertical size={18} className="text-text-muted cursor-grab" />
+              <div className="w-20 h-12 bg-bg-alt rounded flex items-center justify-center text-xs text-text-muted">
                 {banner.image ? "🖼️" : "No image"}
               </div>
               <div className="flex-1">
-                <p className="font-medium text-dark-brown">{banner.title}</p>
-                {banner.subtitle && <p className="text-sm text-dark-brown/50">{banner.subtitle}</p>}
+                <p className="font-medium text-primary">{banner.title}</p>
+                {banner.subtitle && <p className="text-sm text-text-muted">{banner.subtitle}</p>}
               </div>
-              <button onClick={() => toggleActive(banner)} className="p-2 rounded-lg hover:bg-cream transition-colors">
-                {banner.active ? <Eye size={16} className="text-green-500" /> : <EyeOff size={16} className="text-dark-brown/30" />}
+              <button onClick={() => toggleActive(banner)} className="p-2 rounded hover:bg-bg-alt transition-colors">
+                {banner.active ? <Eye size={16} className="text-green-500" /> : <EyeOff size={16} className="text-text-muted" />}
               </button>
-              <button onClick={() => openEditModal(banner)} className="p-2 rounded-lg hover:bg-cream transition-colors text-dark-brown/50 hover:text-rose-gold">
+              <button onClick={() => openEditModal(banner)} className="p-2 rounded hover:bg-bg-alt transition-colors text-text-muted hover:text-primary">
                 <Edit size={16} />
               </button>
-              <button onClick={() => setDeleteId(banner.id)} className="p-2 rounded-lg hover:bg-red-50 transition-colors text-dark-brown/50 hover:text-red-500">
+              <button onClick={() => setDeleteId(banner.id)} className="p-2 rounded hover:bg-red-50 transition-colors text-text-muted hover:text-red-500">
                 <Trash2 size={16} />
               </button>
             </div>
@@ -142,16 +142,16 @@ export default function AdminBannersPage() {
       <Modal isOpen={showModal} onClose={closeModal} title={editingBanner ? "Edit Banner" : "Add Banner"}>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-dark-brown mb-1.5">Title *</label>
-            <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold" placeholder="Banner title" />
+            <label className="block text-sm font-medium text-primary mb-1.5">Title *</label>
+            <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary" placeholder="Banner title" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-dark-brown mb-1.5">Subtitle</label>
-            <input type="text" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold" placeholder="Banner subtitle" />
+            <label className="block text-sm font-medium text-primary mb-1.5">Subtitle</label>
+            <input type="text" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary" placeholder="Banner subtitle" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-dark-brown mb-1.5">Image URL</label>
-            <input type="text" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-cream-dark bg-white text-dark-brown focus:outline-none focus:ring-2 focus:ring-rose-gold/30 focus:border-rose-gold" placeholder="/uploads/banner.jpg or URL" />
+            <label className="block text-sm font-medium text-primary mb-1.5">Image URL</label>
+            <input type="text" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} className="w-full px-4 py-2.5 rounded-md border border-border bg-white text-primary focus:outline-none focus:border-primary" placeholder="/uploads/banner.jpg or URL" />
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <Button variant="ghost" onClick={closeModal}>Cancel</Button>
@@ -162,7 +162,7 @@ export default function AdminBannersPage() {
 
       {/* Delete confirmation */}
       <Modal isOpen={!!deleteId} onClose={() => setDeleteId(null)} title="Delete Banner">
-        <p className="text-dark-brown/70 mb-6">Are you sure you want to delete this banner?</p>
+        <p className="text-text-muted mb-6">Are you sure you want to delete this banner?</p>
         <div className="flex gap-3 justify-end">
           <Button variant="ghost" onClick={() => setDeleteId(null)}>Cancel</Button>
           <Button variant="danger" onClick={handleDelete}>Delete</Button>
